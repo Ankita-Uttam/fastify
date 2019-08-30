@@ -9,6 +9,11 @@ fastify.get('/',async (request, reply) => {
     return { hello: 'world' }
 });
 
+// can send plain string as well in response
+fastify.get('/message', async (req, res) => {
+    return "This is a string message not message object";
+});
+
 // start the server
 const start = async () => {
     try {
