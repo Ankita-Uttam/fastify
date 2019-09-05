@@ -3,10 +3,13 @@ const fastify = require('fastify')({
     logger : true //logger is disabled by default so we are initialising it as true initially
 });
 
+
+fastify.register(require('./routes'));
+
 // declare a route
-// async is necessary here otherwise the page just keeps on loading - why??
 fastify.get('/',async (request, reply) => {
-    return { hello: 'world' }
+    await reply.send({hello: 'world'});
+    // return { hello: 'world' } // this is equivalent of the await call thence async is required
 });
 
 // can send plain string as well in response
